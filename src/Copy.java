@@ -1,6 +1,11 @@
 
 
 import java.io.*;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.CopyOption;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.StringTokenizer;
 
 public class Copy {
@@ -29,6 +34,29 @@ public class Copy {
     f(name);
   }
 
+  // TODO: Make this print nice error messages and instead of making a new file on the desktop give
+  //       it a meaningful name like "name_copy" or whatever
   private void f(String name) {
+	  Path src = FileSystems.getDefault().getPath(name);
+	  Path dest = FileSystems.getDefault().getPath("/Users/skylerlehan/Desktop/test.txt");
+	  File destFile = new File(dest.toString());
+	  if (!destFile.exists())
+	  {
+		try {
+			destFile.createNewFile();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	  }
+	  
+	  CopyOption[] options = {StandardCopyOption.REPLACE_EXISTING};
+	  
+	  try {
+		Files.copy(src, dest, options);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
 }
