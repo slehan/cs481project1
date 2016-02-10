@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -35,14 +36,23 @@ public class Delete {
       // If it is, print the error message that it is a directory and return
       if (file.isDirectory())
       {
-          System.out.println("File path is a directory.");
+          System.out.println("File path is a directory.\n");
           return;
       }
       // Else if it doesn't exist, print the error message
       else if (file.exists() == false)
       {
-          System.out.println("File does not exist.");
+          System.out.println("File does not exist.\n");
           return;
+      }
+      else
+      {
+    	  // Try to delete the file, otherwise print an error
+    	  try {
+    		  Files.delete(path);
+    	  } catch (IOException e) {
+    		  System.out.println("There was an error deleting the file.\n");
+    	  }
       }
   }
 }
