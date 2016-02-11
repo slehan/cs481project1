@@ -21,6 +21,32 @@ public class Dir {
     f(name);
   }
 
-  private void f(String name){
+  private void f(String name) {
+	  // Create a File object with the name
+	  File directory = new File(name);
+	  
+	  // Check to make sure the file exists
+	  if (!directory.exists())
+	  {
+		  // Since the path doesn't exist as a file/directory, print an error
+		  System.out.println("dir: Given path does not exist.\n");
+		  return;
+	  }
+	  
+	  // Check if its not a directory
+	  if (!directory.isDirectory()) {
+		  // Since its not a directory, print an error
+		  System.out.println("dir: Given path is not a directory.\n");
+		  return;
+	  }
+	  
+	  // Create an array of the files in the directory
+	  File[] files = directory.listFiles();
+	  
+	  for (int index = 0; index < files.length; index++)
+	  {
+		  // Print out the file name
+		  System.out.println(files[index].getName());
+	  }
   }
 }
