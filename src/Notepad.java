@@ -21,13 +21,18 @@ public class Notepad extends Thread{
 		String osStr = System.getProperty("os.name");
 		
 		if (osStr.equals("Mac OS X")) {
+			// Attempt to open TextEdit.app
 			try {
-				Process execProcess = Runtime.getRuntime().exec("open /Applications/TextEdit.app");
+				Runtime.getRuntime().exec("open /Applications/TextEdit.app");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("edit: There was an issue opening TextEdit.");
 			}
-
+		} else if (osStr.contains("Windows")) {
+			try {
+				Runtime.getRuntime().exec("start Notepad.exe");
+			} catch (IOException e) {
+				System.out.println("edit: There was an issue opening Notepad.");
+			}
 		}
 	}
 }
