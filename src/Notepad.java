@@ -29,7 +29,7 @@ public class Notepad extends Thread{
 			}
 		} else if (osStr.contains("Windows")) {
 			try {
-				Runtime.getRuntime().exec("start Notepad.exe");
+				Runtime.getRuntime().exec("cmd /c start Notepad.exe");
 			} catch (IOException e) {
 				System.out.println("edit: There was an issue opening Notepad.");
 			}
