@@ -17,5 +17,6 @@ public class Notepad extends Thread{
 	}
 
 	private void f() {
+		System.out.println(System.getProperty("os.name"));
 	}
 }
