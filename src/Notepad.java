@@ -1,4 +1,4 @@
-
+import java.io.IOException;
 
 public class Notepad extends Thread{
 	/*
@@ -17,6 +17,17 @@ public class Notepad extends Thread{
 	}
 
 	private void f() {
-		System.out.println(System.getProperty("os.name"));
+		// Since OS X and Windows have two different text editors, we need to check what OS we're running first
+		String osStr = System.getProperty("os.name");
+		
+		if (osStr.equals("Mac OS X")) {
+			try {
+				Process execProcess = Runtime.getRuntime().exec("open /Applications/TextEdit.app");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
 	}
 }
