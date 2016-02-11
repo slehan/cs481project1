@@ -6,16 +6,16 @@ import java.text.*;
 import java.util.Date;
 
 public class MyDate{
-  /* Command:
+	/* Command:
            date
            Action:
            the current date is displayed.
-  */
+	 */
 
-  public MyDate(){
-    f();
-  }
+	public MyDate(){
+		f();
+	}
 
-  private void f(){
-  }
+	private void f(){
+	}
 }

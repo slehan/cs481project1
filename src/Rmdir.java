@@ -3,7 +3,7 @@
 import java.io.*;
 
 public class Rmdir {
-  /* Command:
+	/* Command:
                rmdir name
                Action:
                Removes the directory name.
@@ -14,13 +14,13 @@ public class Rmdir {
                3. rmdir name         But name is not a directory.
                4. rmdir name         But the directory name is not empty.
                When there is an error println a message and return (not exit).
-  */
+	 */
 
 
-  public Rmdir(String name){
-    f(name);
-  }
+	public Rmdir(String name){
+		f(name);
+	}
 
-  private void f(String name){
-  }
+	private void f(String name){
+	}
 }

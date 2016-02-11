@@ -34,22 +34,22 @@ public class Execute {
 			System.out.println("exec: File: " + name + " does not exist.\n");
 			return;
 		}
-		
+
 		// Attempt to execute the class given
 		try {
 			// Execute the process and create a new Process object
 			Process execProcess = Runtime.getRuntime().exec("java -cp . " + name);
 			// Get the input stream of the process
 			InputStream processIn = execProcess.getInputStream();
-			
+
 			BufferedReader output = new BufferedReader(new InputStreamReader(processIn));
 			String outputLine;
-			
+
 			while ((outputLine = output.readLine()) != null) {
 				System.out.println(outputLine);
 			}
 			output.close();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
