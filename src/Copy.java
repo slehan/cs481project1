@@ -27,7 +27,7 @@ public class Copy {
       // Make sure a name was given
       if (name.isEmpty())
       {
-          System.out.println("No file path was given");
+          System.out.println("copy: No file path was given\n");
           return;
       }
     f(name);
@@ -51,7 +51,7 @@ public class Copy {
 		  try {
 			  destFile.createNewFile();
 		  } catch (IOException e1) {
-			  System.out.println("There was an issue creating the destination file to copy into.\n");
+			  System.out.println("copy: There was an issue creating the destination file to copy into.\n");
 			  return;
 		  }
 	  }
@@ -64,7 +64,7 @@ public class Copy {
 	  try {
 		Files.copy(src, dest, options);
 	} catch (IOException e) {
-		System.out.println("There was an issue copying the file.\n");
+		System.out.println("copy: There was an issue copying the file.\n");
 		return;
 	}
   }

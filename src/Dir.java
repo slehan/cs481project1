@@ -43,6 +43,7 @@ public class Dir {
 	  // Create an array of the files in the directory
 	  File[] files = directory.listFiles();
 	  
+	  // Loop through the files and print them out
 	  for (int index = 0; index < files.length; index++)
 	  {
 		  // Print out the file name

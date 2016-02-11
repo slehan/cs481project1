@@ -29,7 +29,7 @@ public class Attrib {
       // Check input
       if (name.isEmpty())
       {
-          System.out.println("Please enter a file name.");
+          System.out.println("Please enter a file name.\n");
           return;
       }
     f(name);
@@ -49,7 +49,7 @@ public class Attrib {
       // If it is, print the error message that it is a directory and return
       if (file.isDirectory())
       {
-          System.out.println("File path is a directory.");
+          System.out.println("attrib: File path is a directory.\n");
           return;
       }
       
@@ -62,7 +62,7 @@ public class Attrib {
       // exist
       catch (NoSuchFileException ex)
       {
-          System.out.println("File: " + name + " not found.");
+          System.out.println("attrib: File: " + name + " not found.\n");
       } 
       catch (IOException ex)
       {

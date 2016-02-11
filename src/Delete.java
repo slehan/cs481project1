@@ -21,7 +21,7 @@ public class Delete {
       if (name.isEmpty())
       {
           // Print error message and return
-          System.out.println("No file/path given");
+          System.out.println("delete: No file/path given\n");
           return;
       }
     f(name);
@@ -36,13 +36,13 @@ public class Delete {
       // If it is, print the error message that it is a directory and return
       if (file.isDirectory())
       {
-          System.out.println("File path is a directory.\n");
+          System.out.println("delete: File path is a directory.\n");
           return;
       }
       // Else if it doesn't exist, print the error message
       else if (file.exists() == false)
       {
-          System.out.println("File does not exist.\n");
+          System.out.println("delete: File does not exist.\n");
           return;
       }
       else
@@ -51,7 +51,7 @@ public class Delete {
     	  try {
     		  Files.delete(path);
     	  } catch (IOException e) {
-    		  System.out.println("There was an error deleting the file.\n");
+    		  System.out.println("delete: There was an error deleting the file.\n");
     	  }
       }
   }
