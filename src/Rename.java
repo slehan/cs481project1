@@ -1,6 +1,8 @@
 
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.util.StringTokenizer;
 
 public class Rename {
@@ -17,9 +19,19 @@ public class Rename {
 
 
 	public Rename(String name) {
+		if (name.isEmpty())
+		{
+			System.out.println("copy: No file path was given\n");
+			return;
+		}
 		f(name);
 	}
 
 	private void f(String name) {
+		Copy copy = new Copy(name);
+		//Split name into the source and the destination
+		String[] fileNames = name.split(" ", 2);
+		//delete the original
+		Delete delete = new Delete(fileNames[0]);
 	}
 }

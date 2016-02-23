@@ -2,7 +2,6 @@
 
 import java.util.*;
 import java.text.*;
-
 import java.util.Date;
 /* Command:
            time
@@ -16,5 +15,8 @@ public class MyTime{
   }
 
   private void f(){
+	  	DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
   }
 }

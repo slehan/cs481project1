@@ -1,6 +1,7 @@
 
 
 import java.io.*;
+import java.nio.file.Files;
 
 public class Rmdir {
 	/* Command:
@@ -18,9 +19,35 @@ public class Rmdir {
 
 
 	public Rmdir(String name){
+		if (name.isEmpty())
+		{
+			System.out.println("copy: No directory was given\n");
+			return;
+		}
 		f(name);
 	}
 
 	private void f(String name){
+		File deleteMe = new File(name);
+		
+		if(!deleteMe.exists())
+		{
+			System.out.println("copy: Directory does not exist.\n");
+			return;
+		}
+		if(!deleteMe.isDirectory())
+		{
+			System.out.println("copy: Not a directory.\n");
+			return;
+		}
+		if(deleteMe.list().length > 0)
+		{
+			System.out.println("copy: Directory is not empty.\n");
+			return;
+		}
+		else
+		{
+			deleteMe.delete();
+		}
 	}
 }

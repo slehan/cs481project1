@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 
 
 public class Notepad extends Thread{
@@ -17,5 +19,14 @@ public class Notepad extends Thread{
 	}
 
 	private void f() {
-	}
+		Runtime run = Runtime.getRuntime();
+		 
+	    try {
+	      run.exec("notepad");
+	    }
+	    catch (IOException e) {
+	      System.out.println(e);
+	    }   
+	  }
+	
 }
