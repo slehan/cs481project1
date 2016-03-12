@@ -29,30 +29,48 @@ public class Execute {
 
 	private void f(String name){
 		// Check to make sure that the path given exists
-		if (!new File(name + ".class").exists()) {
-			// If the file doesn't exist, print an error
-			System.out.println("exec: File: " + name + " does not exist.\n");
-			return;
-		}
+//		if (!new File(name + ".class").exists()) {
+//			// If the file doesn't exist, print an error
+//			System.out.println("exec: File: " + name + " does not exist.\n");
+//			return;
+//		}
 
 		// Attempt to execute the class given
 		try {
 			// Execute the process and create a new Process object
 			Process execProcess = Runtime.getRuntime().exec("java -cp . " + name);
-			// Get the input stream of the process
-			InputStream processIn = execProcess.getInputStream();
-
-			BufferedReader output = new BufferedReader(new InputStreamReader(processIn));
-			String outputLine;
-
-			while ((outputLine = output.readLine()) != null) {
-				System.out.println(outputLine);
+			// Get the error input stream
+			InputStream errorInStream = execProcess.getErrorStream();
+			// Get the standard input stream
+			InputStream inputStream  = execProcess.getInputStream();
+			// Create a buffered reader for the error stream as well as the input stream
+			BufferedReader errorOutReader = new BufferedReader(new InputStreamReader(errorInStream));
+			BufferedReader output = new BufferedReader(new InputStreamReader(inputStream));
+			
+			// Create strings to hold their values
+			String errorLine = null;
+			String outputLine = null;
+			
+			try
+			{
+				while ((errorLine = errorOutReader.readLine()) != null || (outputLine = output.readLine()) != null)
+				{
+					if (errorLine != null)
+						System.out.println(errorLine);
+					if (outputLine != null)
+						System.out.println(outputLine);
+				}
+				errorOutReader.close();
+				output.close();
 			}
-			output.close();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (IOException e)
+		{
+			System.out.println("Exception: " + e.getMessage());
 		}
 	}
 }
