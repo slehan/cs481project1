@@ -7,7 +7,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class Copy {
+public class Copy extends Command {
 	/* Command::
    copy nameA nameB      where nameA and nameB must be the name of a files and their paths.
    Action:
@@ -17,12 +17,12 @@ public class Copy {
    1. copy               Does not type the file names.
    2. copy name          Did not type a second file name.
    3. copy nameA nameB   but the file nameA does not exist.
-   4. copy nameA nameB   but the file nameB alreadyexist.
+   4. copy nameA nameB   but the file nameB already exist.
    5. copy nameA nameB   but nameA is a directory.
    6. copy nameA nameB   but the file is a directory.
    When there is an error println a message and return (not exit).
 	 */
-
+	
 	public Copy(String name) {
 		// Make sure a name was given
 		if (name.isEmpty())
@@ -30,11 +30,10 @@ public class Copy {
 			System.out.println("copy: No file path was given\n");
 			return;
 		}
-		
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name) {
+	protected void f() {
 		//Split name into the source and the destination
 		String[] fileNames = name.split(" ", 3);
 		

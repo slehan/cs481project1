@@ -5,7 +5,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.StringTokenizer;
 
-public class Rename {
+public class Rename extends Command {
 	/* Command:
              rename nameA nameB
              Action:
@@ -24,10 +24,10 @@ public class Rename {
 			System.out.println("copy: No file path was given\n");
 			return;
 		}
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name) {
+	protected void f() {
 		Copy copy = new Copy(name);
 		//Split name into the source and the destination
 		String[] fileNames = name.split(" ", 2);

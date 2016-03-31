@@ -3,7 +3,7 @@
 import java.io.*;
 import java.lang.Runtime;
 
-public class Execute {
+public class Execute extends Command {
 	/* Command::
          exec name word1 word2, ....   where name must the name of a java class and its paths
                                        and wordis are the arguments.
@@ -24,10 +24,10 @@ public class Execute {
 			System.out.println("exec: The java class name is missing.\n");
 			return;
 		}
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name){
+	protected void f() {
 		// Check to make sure that the path given exists
 //		if (!new File(name + ".class").exists()) {
 //			// If the file doesn't exist, print an error

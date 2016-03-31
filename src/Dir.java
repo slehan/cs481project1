@@ -2,7 +2,7 @@
 
 import java.io.*;
 
-public class Dir {
+public class Dir extends Command {
 	/* Command::
        dir name           where name must be null or the name of a directory and its paths.
        Action:
@@ -18,10 +18,10 @@ public class Dir {
 	 */
 
 	public Dir(String name){
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name) {
+	protected void f() {
 		// Create a File object with the name
 		File directory = new File(name);
 

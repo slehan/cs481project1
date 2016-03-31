@@ -12,7 +12,7 @@ import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Attrib {
+public class Attrib extends Command implements Runnable {
 	/* Command::
      attrib name       where name must be the name of a file and its path.
      Action:
@@ -25,6 +25,7 @@ public class Attrib {
      When there is an error println a message and return (not exit).
 
 	 */
+	
 	public Attrib(String name){
 		// Check input
 		if (name.isEmpty())
@@ -32,10 +33,10 @@ public class Attrib {
 			System.out.println("Please enter a file name.\n");
 			return;
 		}
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name) {
+	protected void f() {
 		// Setup the set of permissions to use
 		Set<PosixFilePermission> permissions = new HashSet<>();
 		// Add read and only read to it
@@ -68,5 +69,10 @@ public class Attrib {
 		{
 			Logger.getLogger(Attrib.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
+
+	@Override
+	public void run() {
+		f();
 	}
 }

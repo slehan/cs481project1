@@ -2,7 +2,7 @@
 
 import java.io.*;
 
-public class Mkdir {
+public class Mkdir extends Command {
 	/* Command:
            mkdir name
            Action:
@@ -21,10 +21,10 @@ public class Mkdir {
 			System.out.println("mkdir: No directory name was given.\n");
 			return;
 		}
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name) {
+	protected void f() {
 		// Create a File object with the name
 		File newDir = new File(name);
 

@@ -4,7 +4,7 @@ import java.util.*;
 
 import java.util.GregorianCalendar;
 
-public class MyDate{
+public class MyDate extends Command {
 	/* Command:
            date
            Action:
@@ -15,7 +15,7 @@ public class MyDate{
 		f();
 	}
 
-	private void f(){
+	protected void f(){
 		// Create a calendar to get the date
 		GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("America/New_York"));
 		// Set the style, for instance, short = "Jan" or "Feb"

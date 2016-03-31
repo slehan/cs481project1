@@ -1,6 +1,6 @@
 import java.io.IOException;
 
-public class Notepad extends Thread{
+public class Notepad extends Command {
 	/*
       Command:
       edit
@@ -16,7 +16,7 @@ public class Notepad extends Thread{
 		f();
 	}
 
-	private void f() {
+	protected void f() {
 		// Since OS X and Windows have two different text editors, we need to check what OS we're running first
 		String osStr = System.getProperty("os.name");
 		

@@ -3,7 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Delete {
+public class Delete extends Command {
 	/* Command::
      delet name           where name must be the name of a file and its paths.
      Action:
@@ -15,6 +15,8 @@ public class Delete {
      3. delete name          But the file name does is a directory.
      When there is an error println a message and return (not exit).
 	 */
+	
+	
 	public Delete(String name){
 
 		// Check to make sure a filename/path was given
@@ -24,10 +26,10 @@ public class Delete {
 			System.out.println("delete: No file/path given\n");
 			return;
 		}
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name)
+	protected void f()
 	{
 		// Get Path object from name
 		Path path = Paths.get(name);

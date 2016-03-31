@@ -3,7 +3,7 @@
 import java.io.*;
 import java.nio.file.Files;
 
-public class Rmdir {
+public class Rmdir extends Command {
 	/* Command:
                rmdir name
                Action:
@@ -24,10 +24,10 @@ public class Rmdir {
 			System.out.println("copy: No directory was given\n");
 			return;
 		}
-		f(name);
+		this.name = name;
 	}
 
-	private void f(String name){
+	protected void f() {
 		File deleteMe = new File(name);
 		
 		if(!deleteMe.exists())
